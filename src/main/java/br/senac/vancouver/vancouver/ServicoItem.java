@@ -13,15 +13,16 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 
 @Path("item")
+
 public class ServicoItem {
 	
 	private static List <Item> lista = new ArrayList<Item>();
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void inserir(Item item) {
+	public void inserirItem(Item item) {
 		try {
-			DaoItem.inserir(item);
+			DaoItem.inserirItem(item);
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
@@ -52,18 +53,4 @@ public class ServicoItem {
 		}
 	}
 	
-	@GET
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	@Path("pesquisar")
-	public List<Item> pesquisar(@QueryParam("nome_item") String nome_item){
-		try{
-			return DaoItem.pesquisar(nome_item);
-		}
-		catch(Exception e){
-			e.printStackTrace();
-	}
-	
-	return null;
-	}
 }
