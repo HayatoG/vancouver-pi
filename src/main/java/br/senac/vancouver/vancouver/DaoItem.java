@@ -1,4 +1,4 @@
-package br.senac.vancouver.pi.cadastro_item;
+package br.senac.vancouver.vancouver;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

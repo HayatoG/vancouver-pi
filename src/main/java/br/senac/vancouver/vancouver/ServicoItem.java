@@ -1,4 +1,5 @@
-package br.senac.vancouver.pi.cadastro_item;
+package br.senac.vancouver.vancouver;
+
 import java.util.List;
 import java.util.ArrayList;
 import jakarta.ws.rs.Path;
