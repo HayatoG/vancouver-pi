@@ -38,7 +38,4 @@ public class Item {
 	public void setDisponivel(boolean disponivel) {
 		this.disponivel = disponivel;
 	}
-	
-	
-
 }

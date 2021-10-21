@@ -8,6 +8,33 @@ import java.util.List;
 
 public class DaoItem {
 	
+	
+	public static List<Item> pesquisarItem(String nome) throws Exception {
+		String sql = "SELECT * FROM item WHERE nome_item like ?";
+		
+		List<Item> resultados = new ArrayList<Item>();
+		
+		try (PreparedStatement ps = DB.connect().prepareStatement(sql)){
+			ps.setString(1, "%" + nome + "%");
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Item item = new Item();
+				
+				item.setId_item(rs.getInt("id_item"));
+				item.setNome_item(rs.getString("nome_item"));
+				item.setPreco_item(rs.getFloat("preco_item"));
+				item.setDescricao(rs.getString("descricao"));
+				item.setDisponivel(rs.getBoolean("disponivel"));
+				
+				resultados.add(item);
+			}
+		}
+		
+		return resultados;
+	}
+	
 
 	public static void inserirItem(Item item) throws Exception {
 		String sql = "INSERT INTO item (id_item, nome_item, preco_item, descricao, disponivel) VALUES (?, ?, ?, ?, ?)";
@@ -34,13 +61,14 @@ public class DaoItem {
 	}
 	
 	public static void atualizar(Item item) throws Exception {
-		String sql = "UPDATE item SET nome_item = ?, descricao = ?, preco = ? status = ? WHERE id_item = ?";
+		String sql = "UPDATE item SET nome_item = ?, descricao = ?, preco_item = ?, disponivel = ? WHERE id_item = ?";
 		
 		try (PreparedStatement ps = DB.connect().prepareStatement(sql)){
 			ps.setString(1, item.getNome_item());
 			ps.setString(2, item.getDescricao());
 			ps.setFloat(3, item.getPreco_item());
 			ps.setBoolean(4, item.isDisponivel());
+			ps.setInt(5, item.getId_item());
 			
 			ps.execute();
 			
