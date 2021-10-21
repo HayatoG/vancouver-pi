@@ -31,5 +31,45 @@ public class ServicoUsuario {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<usuario> listar(){
+		try {
+			return DaoUsuario.listar();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	
+	@PUT
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void atualizar(usuario usu) {
+		try {
+			DaoUsuario.atualizar(usu);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 
+	
+	@DELETE
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void excluir (@QueryParam("id_usuario") int id_usuario) {
+		try {
+			DaoUsuario.excluir(id_usuario);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	
+	
 }
