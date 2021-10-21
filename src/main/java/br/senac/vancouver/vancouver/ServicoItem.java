@@ -16,7 +16,7 @@ import jakarta.ws.rs.PUT;
 
 public class ServicoItem {
 	
-	private static List <Item> lista = new ArrayList<Item>();
+	
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -32,7 +32,7 @@ public class ServicoItem {
 	
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void excluir (@QueryParam("id_item") int id_item) {
+	public void excluir(@QueryParam("id_item") int id_item) {
 		try {
 			DaoItem.excluir(id_item);
 		}
@@ -51,6 +51,20 @@ public class ServicoItem {
 		catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@GET
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("pesquisar")
+	public List<Item> pesquisarItem(@QueryParam("nome_item") String nome_item) {
+		try {
+			return DaoItem.pesquisarItem(nome_item);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 }
