@@ -29,7 +29,7 @@ public class ServicoReserva {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void excluir(@QueryParam("id_reserva") int id_reserva) {
 		try {
-			DaoItem.excluir(id_reserva);
+			DaoReserva.excluir(id_reserva);
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -51,7 +51,7 @@ public class ServicoReserva {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("pesquisar")
-	public List<Reserva> pesquisarReserva(@QueryParam("id_item") String id_reserva ) {
+	public List<Reserva> pesquisarReserva(@QueryParam("id_reserva") String id_reserva ) {
 		try {
 			return DaoReserva.pesquisarReserva(id_reserva);
 		}
