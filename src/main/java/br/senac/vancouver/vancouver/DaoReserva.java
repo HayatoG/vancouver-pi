@@ -38,6 +38,7 @@ public class DaoReserva {
 				ps.setFloat(1, reserva.getPreco_reserva());
 				ps.setString(2, reserva.getData_reserva());
 				ps.setString(3, reserva.getData_devolucao());
+				ps.setInt(4, reserva.getId_reserva());
 				
 				ps.execute();
 				
