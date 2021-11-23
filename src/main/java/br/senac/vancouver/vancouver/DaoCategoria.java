@@ -1,6 +1,9 @@
 package br.senac.vancouver.vancouver;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class DaoCategoria {
@@ -14,6 +17,26 @@ public class DaoCategoria {
 				
 				ps.execute();
 		}
+	}
+	
+	public static List<Categoria> listar() throws Exception{
+		String sql = "select * from categoria;";
+		
+		List<Categoria> resultados = new ArrayList<Categoria>();
+		
+		try(PreparedStatement ps = DB.connect().prepareStatement(sql)){
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Categoria cat = new Categoria();
+				
+				cat.setId_categoria(rs.getInt("id_categoria"));
+				cat.setNome_categoria(rs.getString("nome_categoria"));
+
+				resultados.add(cat);
+			}
+		}
+		return resultados;
 	}
 	
 	

@@ -30,6 +30,17 @@ public class ServicoCategoria {
 		
 	}
 	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Categoria> listar(){
+		try {
+			return DaoCategoria.listar();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void excluirCategoria(@QueryParam("id_categoria") int id_categoria) {
