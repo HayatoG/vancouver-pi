@@ -10,7 +10,7 @@ public class DaoItem {
 	
 	
 	public static List<Item> pesquisarItem(String nome) throws Exception {
-		String sql = "SELECT * FROM item WHERE nome_item like ?";
+		String sql = "SELECT * FROM item WHERE nome_item like ?;";
 		
 		List<Item> resultados = new ArrayList<Item>();
 		
@@ -27,6 +27,9 @@ public class DaoItem {
 				item.setPreco_item(rs.getFloat("preco_item"));
 				item.setDescricao(rs.getString("descricao"));
 				item.setDisponivel(rs.getBoolean("disponivel"));
+				item.setFoto(rs.getString("foto"));
+				item.setId_usuario(rs.getInt("id_usuario"));
+				item.setId_categoria(rs.getInt("id_categoria"));
 				
 				resultados.add(item);
 			}
@@ -37,7 +40,7 @@ public class DaoItem {
 	
 
 	public static void inserirItem(Item item) throws Exception {
-		String sql = "INSERT INTO item (id_item, nome_item, preco_item, descricao, disponivel) VALUES (?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO item (id_item, nome_item, preco_item, descricao, disponivel, foto, id_usuario, id_categoria) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 	
 		try (PreparedStatement ps = DB.connect().prepareStatement(sql)){
 			ps.setInt(1, item.getId_item());
@@ -45,6 +48,9 @@ public class DaoItem {
 			ps.setFloat(3, item.getPreco_item());
 			ps.setString(4, item.getDescricao());
 			ps.setBoolean(5, item.isDisponivel());
+			ps.setString(6, item.getFoto());
+			ps.setInt(7, item.getId_usuario());
+			ps.setInt(8, item.getId_categoria());
 			
 			ps.execute();
 		}
@@ -61,14 +67,17 @@ public class DaoItem {
 	}
 	
 	public static void atualizar(Item item) throws Exception {
-		String sql = "UPDATE item SET nome_item = ?, descricao = ?, preco_item = ?, disponivel = ? WHERE id_item = ?";
+		String sql = "UPDATE item SET nome_item = ?, descricao = ?, preco_item = ?, disponivel = ?, foto =  ?, id_usuario = ?, id_categoria = ? WHERE id_item = ?";
 		
 		try (PreparedStatement ps = DB.connect().prepareStatement(sql)){
 			ps.setString(1, item.getNome_item());
 			ps.setString(2, item.getDescricao());
 			ps.setFloat(3, item.getPreco_item());
 			ps.setBoolean(4, item.isDisponivel());
-			ps.setInt(5, item.getId_item());
+			ps.setString(5, item.getFoto());
+			ps.setInt(6, item.getId_usuario());
+			ps.setInt(7, item.getId_categoria());
+			ps.setInt(8, item.getId_item());
 			
 			ps.execute();
 			

@@ -7,6 +7,9 @@ public class Item {
 	private float preco_item;
 	private String descricao;
 	private boolean disponivel;
+	private String foto;
+	private int id_usuario;
+	private int id_categoria;
 	
 	public int getId_item() {
 		return id_item;
@@ -38,4 +41,23 @@ public class Item {
 	public void setDisponivel(boolean disponivel) {
 		this.disponivel = disponivel;
 	}
+	public String getFoto() {
+		return foto;
+	}
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+	public int getId_usuario() {
+		return id_usuario;
+	}
+	public void setId_usuario(int id_usuario) {
+		this.id_usuario = id_usuario;
+	}
+	public int getId_categoria() {
+		return id_categoria;
+	}
+	public void setId_categoria(int id_categoria) {
+		this.id_categoria = id_categoria;
+	}
+	
 }

@@ -16,8 +16,6 @@ import jakarta.ws.rs.PUT;
 
 public class ServicoItem {
 	
-	
-	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void inserirItem(Item item) {
