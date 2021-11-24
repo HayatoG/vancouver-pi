@@ -16,6 +16,8 @@ import jakarta.ws.rs.PUT;
 
 public class ServicoItem {
 	
+	private static List<Item> lista = new ArrayList<Item>();
+	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void inserirItem(Item item) {
@@ -52,14 +54,11 @@ public class ServicoItem {
 	}
 	
 	@GET
-	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("pesquisar")
-	public List<Item> pesquisarItem(@QueryParam("nome_item") String nome_item) {
+	public List<Item> listar(){
 		try {
-			return DaoItem.pesquisarItem(nome_item);
-		}
-		catch(Exception e) {
+			return DaoItem.listar();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;

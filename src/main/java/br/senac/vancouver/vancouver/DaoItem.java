@@ -9,15 +9,14 @@ import java.util.List;
 public class DaoItem {
 	
 	
-	public static List<Item> pesquisarItem(String nome) throws Exception {
-		String sql = "SELECT * FROM item WHERE nome_item like ?;";
+	public static List<Item> listar() throws Exception {
+		String sql = "SELECT * FROM item;";
 		
 		List<Item> resultados = new ArrayList<Item>();
 		
-		try (PreparedStatement ps = DB.connect().prepareStatement(sql)){
-			ps.setString(1, "%" + nome + "%");
-			
+		try(PreparedStatement ps = DB.connect().prepareStatement(sql)){
 			ResultSet rs = ps.executeQuery();
+			
 			
 			while(rs.next()) {
 				Item item = new Item();
