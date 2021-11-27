@@ -5,6 +5,8 @@ public class Reserva {
 	private int id_reserva;
 	private Float preco_reserva;
 	private String data_reserva, data_devolucao;
+	private int id_usuario;
+	private int id_item;
 	
 	public int getId_reserva() {
 		return id_reserva;
@@ -29,5 +31,17 @@ public class Reserva {
 	}
 	public void setData_devolucao(String data_devolucao) {
 		this.data_devolucao = data_devolucao;
+	}
+	public int getId_item() {
+		return id_item;
+	}
+	public void setId_item(int id_item) {
+		this.id_item = id_item;
+	}
+	public int getId_usuario() {
+		return id_usuario;
+	}
+	public void setId_usuario(int id_usuario) {
+		this.id_usuario = id_usuario;
 	}
 }

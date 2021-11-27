@@ -8,15 +8,16 @@ public class DaoReserva {
 	
 
 	public static void inserirReserva(Reserva reserva) throws Exception{
-		String sql = "INSERT INTO reserva (id_reserva, preco_reserva, data_reserva, data_devolucao) VALUES (?, ?, ?, ?)";
+		String sql = "INSERT INTO reserva (id_reserva, preco_reserva, data_reserva, data_devolucao, id_usuario, id_item) VALUES (?, ?, ?, ?, ?, ?)";
 		
 		try (PreparedStatement ps = DB.connect().prepareStatement(sql)){
 			ps.setInt(1, reserva.getId_reserva());
 			ps.setFloat(2, reserva.getPreco_reserva());
 			ps.setString(3, reserva.getData_reserva());
 			ps.setString(4, reserva.getData_devolucao());
+			ps.setInt(3, reserva.getId_usuario());
+			ps.setInt(4, reserva.getId_item());
 		
-			
 			ps.execute();
 		}
 	}
