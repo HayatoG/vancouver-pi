@@ -13,8 +13,8 @@ public class DaoReserva {
 		try (PreparedStatement ps = DB.connect().prepareStatement(sql)){
 			ps.setInt(1, reserva.getId_reserva());
 			ps.setFloat(2, reserva.getPreco_reserva());
-			ps.setString(3, reserva.getData_reserva());
-			ps.setString(4, reserva.getData_devolucao());
+			ps.setDate(3, java.sql.Date.valueOf(reserva.getData_reserva()));
+			ps.setDate(4, java.sql.Date.valueOf(reserva.getData_devolucao()));
 			ps.setInt(5, reserva.getId_usuario());
 			ps.setInt(6, reserva.getId_item());
 		
@@ -37,8 +37,8 @@ public class DaoReserva {
 			
 			try (PreparedStatement ps = DB.connect().prepareStatement(sql)){
 				ps.setFloat(1, reserva.getPreco_reserva());
-				ps.setString(2, reserva.getData_reserva());
-				ps.setString(3, reserva.getData_devolucao());
+				ps.setDate(2, java.sql.Date.valueOf(reserva.getData_reserva()));
+				ps.setDate(3, java.sql.Date.valueOf(reserva.getData_devolucao()));
 				ps.setInt(4, reserva.getId_reserva());
 				
 				ps.execute();
@@ -61,8 +61,8 @@ public class DaoReserva {
 					
 					reserva.setId_reserva(rs.getInt("id_reserva"));
 					reserva.setPreco_reserva(rs.getFloat("preco_reserva"));
-					reserva.setData_reserva(rs.getString("data_reserva"));
-					reserva.setData_devolucao(rs.getString("data_devolucao"));
+					reserva.setData_reserva(rs.getDate("data_reserva").toLocalDate());
+					reserva.setData_devolucao(rs.getDate("data_devolucao").toLocalDate());
 					
 					resultados.add(reserva);
 				}
