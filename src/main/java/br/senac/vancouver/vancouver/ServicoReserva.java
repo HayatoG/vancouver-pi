@@ -48,14 +48,11 @@ public class ServicoReserva {
 	}
 	
 	@GET
-	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("pesquisar")
-	public List<Reserva> pesquisarReserva(@QueryParam("id_reserva") String id_reserva ) {
+	public List<Reserva> listarReserva(){
 		try {
-			return DaoReserva.pesquisarReserva(id_reserva);
-		}
-		catch(Exception e) {
+			return DaoReserva.listarReserva();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
