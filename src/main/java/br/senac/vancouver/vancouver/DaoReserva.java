@@ -46,15 +46,15 @@ public class DaoReserva {
 			}
 		}
 		
-		public static List<Reserva> pesquisarReserva(String id_reserva) throws Exception {
-			String sql = "SELECT * FROM reserva WHERE id_reserva like ?";
+		
+		public static List<Reserva> listarReserva() throws Exception {
+			String sql = "SELECT * FROM reserva;";
 			
 			List<Reserva> resultados = new ArrayList<Reserva>();
 			
-			try (PreparedStatement ps = DB.connect().prepareStatement(sql)){
-				ps.setString(1, id_reserva);
-				
+			try(PreparedStatement ps = DB.connect().prepareStatement(sql)){
 				ResultSet rs = ps.executeQuery();
+				
 				
 				while(rs.next()) {
 					Reserva reserva = new Reserva();
@@ -63,6 +63,8 @@ public class DaoReserva {
 					reserva.setPreco_reserva(rs.getFloat("preco_reserva"));
 					reserva.setData_reserva(rs.getDate("data_reserva").toLocalDate());
 					reserva.setData_devolucao(rs.getDate("data_devolucao").toLocalDate());
+					reserva.setId_usuario(rs.getInt("id_usuario"));
+					reserva.setId_item(rs.getInt("id_item"));
 					
 					resultados.add(reserva);
 				}
@@ -70,4 +72,5 @@ public class DaoReserva {
 			
 			return resultados;
 		}
+		
 }
