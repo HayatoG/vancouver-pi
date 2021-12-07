@@ -15,8 +15,8 @@ public class DaoUsuario {
 		try(PreparedStatement ps = DB.connect().prepareStatement(sql)){
 				ps.setInt(1, usu.getId_usuario());
 				ps.setString(2, usu.getNome_usuario());
-				ps.setInt(3, usu.getCpf());
-				ps.setInt(4, usu.getTelefone());
+				ps.setString(3, usu.getCpf());
+				ps.setString(4, usu.getTelefone());
 				ps.setString(5, usu.getEndereco());
 				ps.setString(6, usu.getEmail());
 				ps.setString(7, usu.getLogin());
@@ -40,8 +40,8 @@ public class DaoUsuario {
 				
 				usu.setId_usuario(rs.getInt("id_usuario"));
 				usu.setNome_usuario(rs.getString("nome_usuario"));
-				usu.setCpf(rs.getInt("cpf"));
-				usu.setTelefone(rs.getInt("telefone"));
+				usu.setCpf(rs.getString("cpf"));
+				usu.setTelefone(rs.getString("telefone"));
 				usu.setEndereco(rs.getString("endereco"));
 				usu.setEmail(rs.getString("email"));
 				usu.setLogin(rs.getString("login"));
@@ -59,8 +59,8 @@ public class DaoUsuario {
 		
 		try (PreparedStatement ps = DB.connect().prepareStatement(sql)){
 			ps.setString(1, usu.getNome_usuario());
-			ps.setInt(2, usu.getCpf());
-			ps.setInt(3, usu.getTelefone());
+			ps.setString(2, usu.getCpf());
+			ps.setString(3, usu.getTelefone());
 			ps.setString(4, usu.getEndereco());
 			ps.setString(5, usu.getEmail());
 			ps.setString(6, usu.getLogin());

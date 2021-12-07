@@ -6,9 +6,9 @@ public class usuario {
 	
 	public String nome_usuario;
 	
-	public int cpf;
+	public String cpf;
 	
-	public int telefone;
+	public String telefone;
 	
 	public String endereco;
 	
@@ -34,19 +34,19 @@ public class usuario {
 		this.nome_usuario = nome_usuario;
 	}
 
-	public int getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(int cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
-	public int getTelefone() {
+	public String getTelefone() {
 		return telefone;
 	}
 
-	public void setTelefone(int telefone) {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 
